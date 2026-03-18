@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yugansh Suri — Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0b0b0f;
+      --bg2: #111118;
+      --bg3: #16161f;
+      --accent: #f0a500;
+      --text: #f0ede6;
+      --muted: #7a7887;
+      --border: rgba(240, 165, 0, 0.15);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(11, 11, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.825rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: #0b0b0f;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240, 165, 0, 0.25);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border: 0.5px solid rgba(240, 165, 0, 0.4);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(240, 165, 0, 0.06);
+    }
+
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      cursor: pointer;
+      background: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .btn-resume:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(240, 165, 0, 0.05);
+    }
+
+    /* HERO STATS */
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem 2rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .stat-card.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    .stat-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      font-weight: 300;
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 3rem;
+    }
+
+    h2 span {
+      color: var(--accent);
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--bg2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .info-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      min-width: 72px;
+    }
+
+    .info-val {
+      color: var(--muted);
+    }
+
+    .about-highlight {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+
+    .about-highlight h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .cert-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .cert-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .cert-list li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* EXPERIENCE */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .exp-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .exp-period {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-company {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .exp-desc {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+
+    .achievement-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.85rem;
+      background: rgba(240, 165, 0, 0.08);
+      border: 0.5px solid rgba(240, 165, 0, 0.2);
+      border-radius: 2px;
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--bg2);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .skill-group.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skill-group-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.7rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 0.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    /* ACHIEVEMENTS */
+    .achievements-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .ach-card {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 1.75rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .ach-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ach-card:hover {
+      border-color: rgba(240, 165, 0, 0.35);
+    }
+
+    .ach-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(240, 165, 0, 0.1);
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .ach-big {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .ach-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--bg2);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2.25rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      border-color: rgba(240, 165, 0, 0.3);
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at bottom right, rgba(240, 165, 0, 0.07), transparent 70%);
+    }
+
+    .project-period {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* CONTACT */
+    #contact {
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(240, 165, 0, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-intro {
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 0;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .cd-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .cd-val {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a.cd-val:hover {
+      color: var(--text);
+    }
+
+    .contact-dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: #0b0b0f;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-dl-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240, 165, 0, 0.25);
+    }
+
+    /* FORM */
+    .contact-form-wrap {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 0.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    .form-input::placeholder {
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    .form-input:focus {
+      border-color: rgba(240, 165, 0, 0.4);
+      background: rgba(240, 165, 0, 0.03);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+
+    .form-error {
+      display: none;
+      color: #e24b4a;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.9rem 2rem;
+      background: var(--accent);
+      color: #0b0b0f;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240, 165, 0, 0.25);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .fs-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .fs-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .fs-sub {
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATE */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 2rem 3rem;
+        gap: 2.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 4rem 2rem;
+      }
+
+      #contact {
+        padding: 4rem 2rem;
+      }
+
+      footer {
+        padding: 1.5rem 2rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">YS<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left fade-up">
+      <div class="hero-eyebrow">Available for Internships</div>
+      <h1>Yugansh<br /><em>Suri</em></h1>
+      <p class="hero-desc">
+        CS &amp; Artificial Intelligence undergrad at AICE Jaipur. I bridge
+        <strong style="color:var(--text);font-weight:500">technical depth</strong> with
+        <strong style="color:var(--text);font-weight:500">creative strategy</strong> — from
+        Python and data analytics to campaigns that reach hundreds of millions.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get in Touch ↗</a>
+        <a href="https://linkedin.com/in/yuganshsuri" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+        <button class="btn-resume" onclick="downloadResume()">⬇ Resume</button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">293K</div>
+        <div class="stat-label">YouTube Subscribers</div>
+        <div class="stat-sub">Grown from 0 through SEO-driven strategy</div>
+      </div>
+      <div class="stat-card" style="transition-delay:0.15s">
+        <div class="stat-num">246M</div>
+        <div class="stat-label">YouTube Shorts Views</div>
+        <div class="stat-sub">Single viral short, organic reach</div>
+      </div>
+      <div class="stat-card" style="transition-delay:0.3s">
+        <div class="stat-num">42.9M</div>
+        <div class="stat-label">Instagram Reel Reach</div>
+        <div class="stat-sub">Content strategy &amp; audience targeting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-tag">Who I Am</div>
+    <h2>A builder at the<br /><span>intersection</span> of AI &amp; Media</h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>
+          I'm a <strong>Computer Science (AI)</strong> student at Anand International College of Engineering,
+          Jaipur (2023–2027), affiliated with Rajasthan Technical University, Kota.
+          Currently maintaining a CGPA of <strong>7.55</strong>.
+        </p>
+        <p>
+          My work sits where code meets content. I've been running digital marketing
+          for my college's institutional platforms since July 2024 — and the numbers
+          tell a compelling story. What started as a quiet social media presence is
+          now a <strong>293K-subscriber YouTube channel</strong> built entirely from scratch,
+          and content that's racked up hundreds of millions of impressions.
+        </p>
+        <p>
+          On the technical side, I'm actively building expertise in Python, Generative AI,
+          data analytics, and Agile workflows. Certified by Deloitte, Google, LinkedIn Learning,
+          Infosys Springboard, and IIT Bombay.
+        </p>
+        <div class="about-info">
+          <div class="info-row"><span class="info-label">Location</span><span class="info-val">Jaipur, Rajasthan</span>
+          </div>
+          <div class="info-row"><span class="info-label">Email</span><span
+              class="info-val">suriyugansh2005@gmail.com</span></div>
+          <div class="info-row"><span class="info-label">Degree</span><span class="info-val">B.Tech CSE (AI),
+              2023–2027</span></div>
+        </div>
+      </div>
+      <div class="about-highlight fade-up" style="transition-delay:0.2s">
+        <h3>Certifications &amp; Training</h3>
+        <ul class="cert-list">
+          <li>Prompt Engineering for Generative AI – LinkedIn Learning, 2025</li>
+          <li>Data Analytics Job Simulation – Deloitte (Forage), 2025</li>
+          <li>Research &amp; Writing Using Generative AI – LinkedIn Learning, 2025</li>
+          <li>Artificial Intelligence Training – Acmegrade &amp; IIT Bombay, 2024</li>
+          <li>Introduction to Generative AI – Google Cloud, 2024</li>
+          <li>Git Essential Training – LinkedIn Learning, 2025</li>
+          <li>Basics of Python – Infosys Springboard, 2025</li>
+          <li>C++ Training – Spoken Tutorial Project, IIT Bombay, 2024</li>
+          <li>Google Gemini AI Assistant – LinkedIn Learning, 2024</li>
+          <li>The Art &amp; Science of Communication – Skillsoft / Infosys, 2024</li>
+          <li>Smart Brevity – LinkedIn Learning, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-tag">Work</div>
+    <h2>Experience &amp;<br /><span>Leadership</span></h2>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2024 – Present</div>
+        <div class="exp-company">Anand ICE, Jaipur</div>
+      </div>
+      <div>
+        <div class="exp-role">Digital Marketing Intern</div>
+        <p class="exp-desc">End-to-end ownership of SEO, social media marketing, and content strategy for the
+          institution's digital platforms. Developed data-driven content calendars, ran A/B tests on thumbnails and
+          copy, and implemented keyword research pipelines that dramatically scaled organic reach across YouTube and
+          Instagram.</p>
+        <div class="achievement-pills">
+          <span class="pill">293K YouTube Subscribers</span>
+          <span class="pill">246M Shorts Views</span>
+          <span class="pill">42.9M Instagram Reach</span>
+          <span class="pill">SEO Strategy</span>
+          <span class="pill">Content Calendar</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Nov – Dec 2025</div>
+        <div class="exp-company">AmmodiniIFF</div>
+      </div>
+      <div>
+        <div class="exp-role">Artist Management Lead</div>
+        <p class="exp-desc">Managed coordination for 30+ Bengali artists at the Ammodini International Film Festival
+          2025. Handled celebrity relations, event logistics, and stage operations — developing strong stakeholder
+          management and real-time problem-solving skills.</p>
+        <div class="achievement-pills">
+          <span class="pill">30+ Artists</span>
+          <span class="pill">Celebrity Relations</span>
+          <span class="pill">Event Logistics</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jun – Aug 2024</div>
+        <div class="exp-company">Anand ICE</div>
+      </div>
+      <div>
+        <div class="exp-role">P.R. Head &amp; Graphic Designer</div>
+        <p class="exp-desc">Designed marketing creatives and managed B2C customer data to support promotional campaigns
+          and drive audience engagement across platforms.</p>
+        <div class="achievement-pills">
+          <span class="pill">Graphic Design</span>
+          <span class="pill">B2C Campaigns</span>
+          <span class="pill">Canva · Lightroom</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">2023 – 2024</div>
+        <div class="exp-company">Anand ICE</div>
+      </div>
+      <div>
+        <div class="exp-role">Student Council Member</div>
+        <p class="exp-desc">Represented the first-year student body, contributing to college events, student welfare
+          initiatives, and institutional communications.</p>
+        <div class="achievement-pills">
+          <span class="pill">Leadership</span>
+          <span class="pill">Representation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-tag">Toolkit</div>
+    <h2>Skills &amp;<br /><span>Competencies</span></h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Technical Skills </div>
+        <div class="skill-tags"><span class="tag">Python</span><span class="tag">Agentic AI</span><span
+            class="tag">Git</span></div>
+      </div>
+      <div class="skill-group" style="transition-delay:0.1s">
+        <div class="skill-group-title">Data &amp; Analytics</div>
+        <div class="skill-tags"><span class="tag">Data Analysis</span><span class="tag">SEO Analytics</span><span
+            class="tag">Keyword Research</span><span class="tag">Performance Tracking</span><span class="tag">MS
+            Excel</span></div>
+      </div>
+      <div class="skill-group" style="transition-delay:0.2s">
+        <div class="skill-group-title">Digital Marketing</div>
+        <div class="skill-tags"><span class="tag">SEO</span><span class="tag">Social Media Management</span><span
+            class="tag">Content Strategy</span><span class="tag">Content Calendar</span><span class="tag">Social
+            Scheduling</span></div>
+      </div>
+      <div class="skill-group" style="transition-delay:0.3s">
+        <div class="skill-group-title">Tools &amp; Software</div>
+        <div class="skill-tags"><span class="tag">Jira</span><span class="tag">Canva</span><span class="tag">Final Cut
+            Pro</span><span class="tag">Adobe Lightroom</span><span class="tag">PowerPoint</span></div>
+      </div>
+      <div class="skill-group" style="transition-delay:0.4s">
+        <div class="skill-group-title">Methodologies</div>
+        <div class="skill-tags"><span class="tag">Agile</span><span class="tag">Scrum</span><span
+            class="tag">SDLC</span><span class="tag">Gap Analysis</span><span class="tag">SWOT Analysis</span></div>
+      </div>
+      <div class="skill-group" style="transition-delay:0.5s">
+        <div class="skill-group-title">Soft Skills</div>
+        <div class="skill-tags"><span class="tag">Stakeholder Management</span><span class="tag">Workflow
+            Optimization</span><span class="tag">Communication</span><span class="tag">Proofreading</span><span
+            class="tag">QA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="section-tag">Impact</div>
+    <h2>Numbers that<br /><span>speak</span></h2>
+    <div class="achievements-row">
+      <div class="ach-card">
+        <div class="ach-icon">▲</div>
+        <div class="ach-big">293K</div>
+        <div class="ach-desc">YouTube subscribers grown from 0 via SEO-driven content planning</div>
+      </div>
+      <div class="ach-card" style="transition-delay:0.1s">
+        <div class="ach-icon">▶</div>
+        <div class="ach-big">246M</div>
+        <div class="ach-desc">Views on a single YouTube Short through optimised content &amp; targeting</div>
+      </div>
+      <div class="ach-card" style="transition-delay:0.2s">
+        <div class="ach-icon">◎</div>
+        <div class="ach-big">42.9M</div>
+        <div class="ach-desc">Instagram Reel reach achieved through creative content strategy</div>
+      </div>
+      <div class="ach-card" style="transition-delay:0.3s">
+        <div class="ach-icon">✦</div>
+        <div class="ach-big">SIH</div>
+        <div class="ach-desc">Participant in SmartIndia Hackathon, national-level innovation challenge</div>
+      </div>
+      <div class="ach-card" style="transition-delay:0.4s">
+        <div class="ach-icon">◈</div>
+        <div class="ach-big">30+</div>
+        <div class="ach-desc">Artists &amp; celebrity relations managed at Ammodini International Film Festival 2025
+        </div>
+      </div>
+      <div class="ach-card" style="transition-delay:0.5s">
+        <div class="ach-icon">◆</div>
+        <div class="ach-big">DLT</div>
+        <div class="ach-desc">Completed Deloitte Data Analytics Job Simulation via Forage</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-tag">Work</div>
+    <h2>Selected<br /><span>Projects</span></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-period">Jul 2024 – Present</div>
+        <div class="project-title">Social Media Growth Strategy — Anand ICE</div>
+        <p class="project-desc">Developed and executed SEO-driven content strategies to improve engagement across social
+          media platforms. Scaled the YouTube channel from 0 to 293K subscribers and generated hundreds of millions of
+          views through systematic content planning, A/B testing, and performance analytics.</p>
+      </div>
+      <div class="project-card" style="transition-delay:0.1s">
+        <div class="project-period">Jan – Aug 2024</div>
+        <div class="project-title">AI &amp; Python Training Projects</div>
+        <p class="project-desc">Completed a series of practical programming exercises during AI and Python training
+          programs. Built small applications and scripts exploring Python fundamentals, core AI concepts, and data
+          handling — foundation for more complex applied ML work.</p>
+      </div>
+      <div class="project-card" style="transition-delay:0.2s">
+        <div class="project-period">2024</div>
+        <div class="project-title">Digital Marketing Analytics Dashboard</div>
+        <p class="project-desc">Analysed social media performance metrics using Excel and analytics tools to track
+          engagement, reach, and audience growth. Derived actionable insights to refine content strategy and improve
+          marketing campaign effectiveness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-tag">Say Hello</div>
+    <h2>Get in<br /><span>Touch</span></h2>
+    <div class="contact-grid">
+
+      <!-- Info column -->
+      <div class="fade-up">
+        <p class="contact-intro">I'm actively looking for internship opportunities where I can apply my technical,
+          analytical, and creative skills. If you're working on something interesting — let's talk.</p>
+        <div class="contact-details">
+          <div class="contact-detail-row">
+            <span class="cd-label">Email</span>
+            <a href="mailto:suriyugansh2005@gmail.com" class="cd-val">suriyugansh2005@gmail.com</a>
+          </div>
+          <div class="contact-detail-row">
+            <span class="cd-label">Location</span>
+            <span class="cd-val">Jaipur, Rajasthan</span>
+          </div>
+          <div class="contact-detail-row">
+            <span class="cd-label">LinkedIn</span>
+            <a href="https://linkedin.com/in/yuganshsuri" target="_blank" class="cd-val">linkedin.com/in/yuganshsuri</a>
+          </div>
+        </div>
+        <button class="contact-dl-btn" onclick="downloadResume()">⬇ Download Resume</button>
+      </div>
+
+      <!-- Form column -->
+      <div class="contact-form-wrap fade-up" style="transition-delay:0.15s">
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon">✦</div>
+          <div class="fs-title">Message sent!</div>
+          <div class="fs-sub">Thanks for reaching out. I'll get back to you shortly.</div>
+        </div>
+        <div id="formBody">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-input" id="fName" placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="fEmail" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" id="fSubject"
+              placeholder="Internship opportunity / Collaboration / Other" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-input form-textarea" id="fMessage"
+              placeholder="Tell me about what you're working on..."></textarea>
+          </div>
+          <div class="form-error" id="formError"></div>
+          <button class="btn-submit" id="submitBtn" onclick="submitForm()">Send Message ↗</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Yugansh Suri. Jaipur, Rajasthan.</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up,.stat-card,.exp-item,.skill-group,.ach-card,.project-card').forEach(el => obs.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.fade-up,.stat-card').forEach(el => el.classList.add('visible'));
+    }, 100);
+
+    // Contact form
+    function submitForm() {
+      const name = document.getElementById('fName').value.trim();
+      const email = document.getElementById('fEmail').value.trim();
+      const message = document.getElementById('fMessage').value.trim();
+      const errEl = document.getElementById('formError');
+      const btn = document.getElementById('submitBtn');
+      errEl.style.display = 'none';
+      if (!name || !email || !message) {
+        errEl.textContent = 'Please fill in your name, email, and message.';
+        errEl.style.display = 'block'; return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errEl.textContent = 'Please enter a valid email address.';
+        errEl.style.display = 'block'; return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending...';
+      setTimeout(() => {
+        document.getElementById('formBody').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 1200);
+    }
+
+    // Resume download
+    function downloadResume() {
+      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Yugansh Suri - Resume</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Georgia,serif;font-size:11pt;color:#111;padding:2.5rem 3rem;line-height:1.5;max-width:820px;margin:0 auto}h1{font-family:Arial,sans-serif;font-size:22pt;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px}.sub{font-size:10pt;color:#555;margin-bottom:5px}.bar{font-size:9.5pt;color:#333;margin-bottom:14px}.bar a{color:#333;text-decoration:none}hr{border:none;border-top:1.5px solid #111;margin:6px 0 12px}.thin{border:none;border-top:0.5px solid #ccc;margin:6px 0 10px}h2{font-family:Arial,sans-serif;font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}.row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}.b{font-weight:bold;font-size:10.5pt}.g{font-size:9.5pt;color:#555}.co{font-size:9.5pt;color:#555;margin-bottom:5px}ul{margin-left:14px;margin-bottom:10px}li{font-size:10pt;margin-bottom:2px}.sk{font-size:10pt;margin-bottom:8px}.skb{font-weight:bold}.certs{columns:2;column-gap:2rem}.certs li{break-inside:avoid;font-size:9.5pt;margin-bottom:3px}.sec{margin-bottom:16px}@media print{body{padding:1.5rem 2rem}}</style></head><body>
+<h1>Yugansh Suri</h1>
+<div class="sub">Computer Science (AI) Undergraduate &middot; Digital Marketing &middot; Data Analytics</div>
+<div class="bar">suriyugansh2005@gmail.com &middot; Jaipur, Rajasthan &middot; <a href="https://linkedin.com/in/yuganshsuri">linkedin.com/in/yuganshsuri</a></div>
+<hr/>
+<div class="sec"><h2>Summary</h2><div class="thin"></div><p style="font-size:10pt">Computer Science (AI) undergraduate at Anand International College of Engineering (2023&ndash;2027) with practical experience in digital marketing, data analytics, and content strategy. Experienced in SEO, social media management, and campaign analytics. Certified in Python, Generative AI, and Data Analytics. Seeking internship opportunities to apply technical and analytical skills.</p></div>
+<div class="sec"><h2>Experience</h2><div class="thin"></div>
+<div class="row"><span class="b">Digital Marketing Intern</span><span class="g">Jul 2024 &ndash; Present</span></div><div class="co">Anand International College of Engineering, Jaipur</div>
+<ul><li>Managed SEO, social media marketing, and content strategy for institutional platforms</li><li>Grew YouTube channel from 0 to 293K subscribers through optimised content &amp; audience targeting</li><li>Generated viral content reaching 42.9M on Instagram and 246M views on YouTube Shorts</li></ul>
+<div class="row"><span class="b">Artist Management Lead</span><span class="g">Nov &ndash; Dec 2025</span></div><div class="co">Ammodini International Film Festival</div>
+<ul><li>Managed coordination for 30+ Bengali artists; handled celebrity relations and event logistics</li></ul>
+<div class="row"><span class="b">P.R. Head &amp; Graphic Designer</span><span class="g">Jun &ndash; Aug 2024</span></div><div class="co">Anand International College of Engineering</div>
+<ul><li>Designed marketing creatives; managed B2C customer data for promotional campaigns</li></ul>
+<div class="row"><span class="b">Student Council Member</span><span class="g">2023 &ndash; 2024</span></div><div class="co">Anand International College of Engineering</div>
+<ul><li>Represented first-year student body; developed leadership and communication skills</li></ul>
+</div>
+<div class="sec"><h2>Education</h2><div class="thin"></div>
+<div class="row"><span class="b">B.Tech CSE (Artificial Intelligence) &middot; Anand ICE, Jaipur &middot; RTU Kota</span><span class="g">2023&ndash;2027</span></div><div class="g" style="margin-bottom:6px">CGPA: 7.55</div>
+<div class="row"><span class="b">Senior Secondary XII CBSE &middot; St. Anselm's Pink City School</span><span class="g">2023</span></div><div class="g" style="margin-bottom:6px">76% &middot; English 90, Chemistry 77, Physics 67</div>
+<div class="row"><span class="b">Secondary X CBSE &middot; St. Anselm's Pink City School</span><span class="g">2021</span></div><div class="g" style="margin-bottom:6px">81%</div>
+</div>
+<div class="sec"><h2>Skills</h2><div class="thin"></div>
+<div class="sk"><span class="skb">Programming:</span> Python, C++, Agentic AI, Git</div>
+<div class="sk"><span class="skb">Data &amp; Analytics:</span> Data Analysis, SEO Analytics, Keyword Research, Performance Tracking, MS Excel</div>
+<div class="sk"><span class="skb">Digital Marketing:</span> SEO, Social Media Management, Content Strategy, Content Calendar Management</div>
+<div class="sk"><span class="skb">Tools:</span> Jira, Canva, Final Cut Pro, Adobe Lightroom, PowerPoint</div>
+<div class="sk"><span class="skb">Methodologies:</span> Agile, Scrum, SDLC, Gap Analysis, SWOT Analysis</div>
+</div>
+<div class="sec"><h2>Certifications</h2><div class="thin"></div>
+<ul class="certs"><li>Prompt Engineering for Generative AI &ndash; LinkedIn Learning, 2025</li><li>Data Analytics Job Simulation &ndash; Deloitte (Forage), 2025</li><li>Research &amp; Writing Using Generative AI &ndash; LinkedIn Learning, 2025</li><li>Git Essential Training &ndash; LinkedIn Learning, 2025</li><li>Basics of Python &ndash; Infosys Springboard, 2025</li><li>Artificial Intelligence Training &ndash; Acmegrade &amp; IIT Bombay, 2024</li><li>Introduction to Generative AI &ndash; Google Cloud, 2024</li><li>Google Gemini AI Assistant &ndash; LinkedIn Learning, 2024</li><li>C++ Training &ndash; IIT Bombay Spoken Tutorial, 2024</li><li>Smart Brevity &ndash; LinkedIn Learning, 2024</li><li>The Art &amp; Science of Communication &ndash; Skillsoft/Infosys, 2024</li></ul>
+</div>
+<div class="sec"><h2>Achievements</h2><div class="thin"></div>
+<ul><li>Grew YouTube from 0 to 293K subscribers through strategic SEO-driven content planning</li><li>Achieved 42.9M reach on an Instagram Reel and 246M views on a YouTube Short</li><li>Participant &ndash; SmartIndia Hackathon (SIH), national-level innovation challenge</li><li>Managed 30+ artists and celebrity relations at Ammodini International Film Festival, 2025</li></ul>
+</div>
+</body></html>`;
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Yugansh_Suri_Resume.html';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a); URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+
+</html>

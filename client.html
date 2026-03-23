@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Project</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0b0f;
+      color: #f0ede6;
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+    .container {
+      position: relative;
+      z-index: 10;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: #f0a500;
+      margin-bottom: 2rem;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      border: 0.5px solid rgba(240, 165, 0, 0.4);
+      color: #f0ede6;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: #f0a500;
+      background: rgba(240, 165, 0, 0.06);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Project under process</h1>
+    <a href="freelancing.html" class="btn-ghost" style="margin-right: 1rem;">← Back to Freelancing</a>
+    <a href="index.html" class="btn-ghost">Back to Home</a>
+  </div>
+</body>
+</html>
